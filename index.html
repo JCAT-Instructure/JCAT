@@ -8,78 +8,38 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    /* Reset for Iframe Stability */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #fafaf9;
-      color: #1c1917;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-    .chart-container {
-      position: relative;
-      width: 100%;
-      height: 350px;
-      margin: auto;
-    }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(231, 229, 228, 0.6);
-    }
-    .tab-active {
-      border-color: #e11d48;
-      color: #e11d48;
-      background: rgba(225, 29, 72, 0.05);
-    }
-    .case-card:hover .case-icon {
-      transform: scale(1.1) rotate(-5deg);
-    }
-    .gradient-text {
-      background: linear-gradient(135deg, #1c1917 0%, #e11d48 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    body { font-family: 'Inter', sans-serif; background-color: #fafaf9; color: #1c1917; scroll-behavior: smooth; overflow-x: hidden; }
+    .chart-container { position: relative; width: 100%; height: 350px; margin: auto; }
+    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(231, 229, 228, 0.6); }
+    .tab-active { border-color: #e11d48; color: #e11d48; background: rgba(225, 29, 72, 0.05); }
+    .gradient-text { background: linear-gradient(135deg, #1c1917 0%, #e11d48 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   </style>
 </head>
 <body class="antialiased">
-
   <nav class="fixed w-full z-50 glass-card px-8 py-5 flex justify-between items-center shadow-sm">
     <div class="text-xl font-black tracking-tighter text-stone-900">INSTRUCTURE <span class="text-rose-600">CAREER</span></div>
     <div class="hidden md:flex space-x-10 text-[10px] font-black uppercase tracking-[0.2em] text-stone-400">
-      <a href="#dominance" class="hover:text-rose-600 transition-colors">01. Dominance</a>
-      <a href="#momentum" class="hover:text-rose-600 transition-colors">02. Momentum</a>
-      <a href="#usecases" class="hover:text-rose-600 transition-colors text-stone-900">03. Use Cases</a>
-      <a href="#ecosystem" class="hover:text-rose-600 transition-colors">04. Ecosystem</a>
+      <a href="#dominance" class="hover:text-rose-600">01. Dominance</a>
+      <a href="#momentum" class="hover:text-rose-600">02. Momentum</a>
+      <a href="#usecases" class="hover:text-rose-600">03. Use Cases</a>
+      <a href="#ecosystem" class="hover:text-rose-600">04. Ecosystem</a>
     </div>
   </nav>
 
-  <header class="pt-48 pb-32 px-6 text-center bg-white border-b border-stone-200">
+  <header class="pt-48 pb-32 px-6 text-center bg-white">
     <div class="max-w-5xl mx-auto fade-in">
-      <span class="text-rose-600 font-bold uppercase tracking-widest text-xs mb-4 block">A decade of market-leading insight</span>
-      <h1 class="text-6xl md:text-8xl font-black text-stone-900 mb-8 leading-[0.95]">Where Quality <br><span class="gradient-text italic">Stands Out.</span></h1>
-      <p class="text-xl text-stone-500 mb-10 max-w-3xl mx-auto leading-relaxed">The rules of learning have changed. We are translating Higher Ed dominance into a new gold standard for Business, Healthcare, and Government agencies across North America.</p>
-      <div class="flex justify-center">
-        <a href="#usecases" class="px-10 py-4 bg-stone-900 text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-rose-600 transition-all shadow-xl hover:shadow-rose-200">View Client Outcomes</a>
-      </div>
+      <span class="text-rose-600 font-bold uppercase tracking-widest text-xs mb-4 block">Market Insight</span>
+      <h1 class="text-6xl md:text-8xl font-black text-stone-900 mb-8 leading-tight">Where Quality <span class="gradient-text italic">Stands Out.</span></h1>
+      <p class="text-xl text-stone-500 mb-10 max-w-3xl mx-auto">Translating Higher Ed dominance into a gold standard for Business and Government.</p>
     </div>
   </header>
 
   <section id="dominance" class="py-32 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
     <div class="fade-in">
-      <h2 class="text-xs font-bold text-rose-600 uppercase tracking-widest mb-4">Market Foundation</h2>
       <h3 class="text-4xl font-black mb-8 text-stone-900">The 42% Advantage.</h3>
-      <p class="text-stone-600 mb-8 text-lg">In North American Higher Education, Canvas isn't just a tool; it's the environment. This creates a workforce of <strong>Canvas-Native Learners</strong>—professionals who arrive on Day 1 already knowing how to master new skills within our ecosystem.</p>
       <div class="grid grid-cols-2 gap-4">
         <div class="p-6 bg-stone-100 rounded-2xl border border-stone-200">
           <span class="block text-3xl font-black text-stone-900">1st</span>
@@ -87,72 +47,59 @@
         </div>
         <div class="p-6 bg-stone-100 rounded-2xl border border-stone-200">
           <span class="block text-3xl font-black text-stone-900">40%+</span>
-          <span class="text-[10px] uppercase font-bold text-stone-500">Native Workforce Familiarity</span>
+          <span class="text-[10px] uppercase font-bold text-stone-500">Workforce Familiarity</span>
         </div>
       </div>
     </div>
-    <div class="fade-in bg-white p-10 rounded-[2.5rem] shadow-2xl border border-stone-100">
-      <h3 class="text-center font-bold text-stone-400 mb-10 uppercase tracking-widest text-[10px]">Higher Ed LMS Market Share (N. America)</h3>
-      <div class="chart-container">
-        <canvas id="shareChart"></canvas>
-      </div>
+    <div class="fade-in bg-white p-10 rounded-[2.5rem] shadow-xl">
+      <div class="chart-container"><canvas id="shareChart"></canvas></div>
     </div>
   </section>
 
-  <section id="momentum" class="py-32 px-6 bg-stone-100 border-y border-stone-200">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div class="fade-in lg:order-2">
-          <h2 class="text-xs font-bold text-rose-600 uppercase tracking-widest mb-4">The Pivot</h2>
-          <h3 class="text-4xl font-black mb-8 text-stone-900">The Growth of Results.</h3>
-          <p class="text-stone-600 mb-8 leading-relaxed">As organizations move away from "Check-the-Box" training, the demand for Outcome-Based Learning skyrocketed. We are seeing triple-digit growth in government and enterprise sectors by proving that quality drives retention and skill mastery.</p>
-        </div>
-        <div class="fade-in lg:order-1 bg-white p-10 rounded-[2.5rem] shadow-xl border border-stone-100">
-          <div class="chart-container h-[400px]">
-            <canvas id="growthChart"></canvas>
-          </div>
+  <section id="ecosystem" class="py-32 px-6 bg-stone-950 text-white">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h3 class="text-5xl font-black mb-10">Better Together.</h3>
+        <div class="space-y-4">
+          <button onclick="switchTab('catalog')" id="btn-catalog" class="tab-btn w-full text-left p-6 rounded-2xl border border-stone-800">Canvas Catalog</button>
+          <button onclick="switchTab('career')" id="btn-career" class="tab-btn w-full text-left p-6 rounded-2xl border border-stone-800 tab-active">Canvas Career</button>
         </div>
       </div>
+      <div id="display-content" class="bg-stone-900 p-12 rounded-3xl min-h-[300px]">
+        </div>
     </div>
   </section>
 
-  <section id="usecases" class="py-32 px-6 max-w-7xl mx-auto">
-    <div class="text-center mb-20 fade-in">
-      <h2 class="text-xs font-bold text-rose-600 uppercase tracking-widest mb-4">Proof in Practice</h2>
-      <h3 class="text-5xl font-black text-stone-900">Transforming Industries.</h3>
-    </div>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <div class="case-card glass-card p-10 rounded-[2rem] fade-in flex flex-col h-full border-t-8 border-t-blue-600">
-        <div class="case-icon text-5xl mb-6 transition-transform duration-500">&#127946;</div>
-        <h4 class="text-2xl font-black mb-4">USA Swimming</h4>
-        <p class="text-stone-600 text-sm mb-8 flex-grow leading-relaxed">Solving the challenge of certifying 400,000+ members, coaches, and officials. By utilizing <strong>Canvas Catalog</strong> as their storefront and <strong>Parchment</strong> for credentials, they ensured safety and compliance were verifiable and portable across the nation.</p>
-        <div class="pt-6 border-t border-stone-100">
-          <span class="text-[10px] font-bold uppercase text-stone-400 tracking-tighter">Impact: National Certification at Scale</span>
-        </div>
-      </div>
-      <div class="case-card glass-card p-10 rounded-[2rem] fade-in delay-100 flex flex-col h-full border-t-8 border-t-rose-600">
-        <div class="case-icon text-5xl mb-6 transition-transform duration-500">&#127973;</div>
-        <h4 class="text-2xl font-black mb-4">Medical Practice Evaluation</h4>
-        <p class="text-stone-600 text-sm mb-8 flex-grow leading-relaxed">Moving from theory to <strong>Patient Care Mastery</strong>. Agencies use Canvas Career to evaluate patient support techniques and relationship management through data-driven observations and interviews, ensuring clinical standards are met with evidence.</p>
-        <div class="pt-6 border-t border-stone-100">
-          <span class="text-[10px] font-bold uppercase text-stone-400 tracking-tighter">Impact: Verified Clinical Outcomes</span>
-        </div>
-      </div>
-      <div class="case-card glass-card p-10 rounded-[2rem] fade-in delay-200 flex flex-col h-full border-t-8 border-t-stone-900">
-        <div class="case-icon text-5xl mb-6 transition-transform duration-500">&#127891;</div>
-        <h4 class="text-2xl font-black mb-4">Idaho State University</h4>
-        <p class="text-stone-600 text-sm mb-8 flex-grow leading-relaxed">"Canvas Career is not only aligning with the future professional educational experiences I want to develop, <strong>it's driving it.</strong>" — John Louviere. ISU is bridging the gap between academic theory and career-ready skillsets.</p>
-        <div class="pt-6 border-t border-stone-100">
-          <span class="text-[10px] font-bold uppercase text-stone-400 tracking-tighter">Impact: Academic-to-Career Alignment</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <script>
+    // Reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  <section id="ecosystem" class="py-32 px-6 bg-stone-950 text-white overflow-hidden">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-        <div class="fade-in">
-          <h2 class="text-xs font-bold text-rose-500 uppercase tracking-widest mb-6">The Architecture</h2>
-          <h3 class="text-5xl font-black mb-10 leading-tight">Better Together.</h3>
-          <p class="text-stone-400 mb-12 text-lg leading-relaxed">Individually, they are powerful. Together, they are an unstoppable lifecycle for the modern learner.</
+    // Market Share Chart
+    const shareCtx = document.getElementById('shareChart').getContext('2d');
+    new Chart(shareCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Canvas', 'Others'],
+        datasets: [{ data: [42, 58], backgroundColor: ['#e11d48', '#d6d3d1'], borderWidth: 0 }]
+      },
+      options: { responsive: true, maintainAspectRatio: false, cutout: '80%' }
+    });
+
+    // Tab Logic
+    const content = {
+      catalog: { title: "Catalog", text: "The storefront for your learning content." },
+      career: { title: "Career", text: "The engine for skill-mapping and mastery." }
+    };
+    function switchTab(key) {
+      const div = document.getElementById('display-content');
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('tab-active'));
+      document.getElementById(`btn-${key}`).classList.add('tab-active');
+      div.innerHTML = `<h3 class="text-4xl font-bold mb-4">${content[key].title}</h3><p class="text-stone-400 text-lg">${content[key].text}</p>`;
+    }
+    switchTab('career'); // Init
+  </script>
+</body>
+</html>
