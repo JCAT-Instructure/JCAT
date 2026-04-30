@@ -3,302 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instructure: Market Dominance & The Career Pivot</title>
+    <title>Instructure | North American Market Leadership</title>
+    <!-- Tailwind CSS for modern responsive styling -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for interactive data visualization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Outfit Font for clean, premium executive feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #fafaf9; color: #1c1917; scroll-behavior: smooth; }
-        .chart-container { position: relative; width: 100%; max-width: 800px; margin: auto; height: 350px; }
-        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(231, 229, 228, 0.6); }
-        .tab-active { border-color: #e11d48; color: #e11d48; background: rgba(225, 29, 72, 0.05); }
-        .case-card:hover .case-icon { transform: scale(1.1) rotate(-5deg); }
-        .gradient-text { background: linear-gradient(135deg, #1c1917 0%, #e11d48 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    </style>
-    <!-- Chosen Palette: Slate & Rose (Executive Professional) -->
-    <!-- Application Structure Plan: 
-         1. Psychological Hook: Establishing the "Quality vs. Convenience" battle.
-         2. Market Authority: Visualizing Higher Ed dominance (The Foundation).
-         3. Growth Trajectory: Showing the rapid climb in Business and Gov.
-         4. Impact Gallery: Specific use cases (USA Swimming, Medical, ISU) to drive home credibility.
-         5. The Ecosystem Logic: Explaining "Better Together". -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-</head>
-<body class="antialiased overflow-x-hidden">
+        :root {
+            --inst-orange: #f3592a;
+            --inst-slate: #243342;
+            --canvas-rose: #e11d48;
+        }
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: #ffffff; 
+            color: var(--inst-slate);
+            scroll-behavior: smooth;
+            font-size: 1.25rem; /* Massive base font for executive readability */
+        }
+        h1 { line-height: 0.95; font-weight: 900; letter-spacing: -0.04em; }
+        h2 { font-weight: 800; letter-spacing: -0.02em; }
+        
+        .reveal { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1); 
+        }
+        .reveal.active { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
 
-    <nav class="fixed w-full z-50 glass-card px-8 py-5 flex justify-between items-center shadow-sm">
-        <div class="text-xl font-black tracking-tighter text-stone-900">INSTRUCTURE <span class="text-rose-600">CAREER</span></div>
-        <div class="hidden md:flex space-x-10 text-[10px] font-black uppercase tracking-[0.2em] text-stone-400">
-            <a href="#dominance" class="hover:text-rose-600 transition-colors">01. Dominance</a>
-            <a href="#momentum" class="hover:text-rose-600 transition-colors">02. Momentum</a>
-            <a href="#usecases" class="hover:text-rose-600 transition-colors text-stone-900">03. Use Cases</a>
-            <a href="#ecosystem" class="hover:text-rose-600 transition-colors">04. Ecosystem</a>
+        /* Case Study Styling */
+        .case-study-card {
+            border-left: 10px solid var(--inst-orange);
+            transition: all 0.4s ease;
+            background: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
+        }
+        .case-study-card:hover {
+            transform: scale(1.03) translateX(10px);
+            background: #fff9f6;
+            box-shadow: 0 30px 40px -10px rgba(243, 89, 42, 0.15);
+        }
+
+        /* Center-Aligned Leader Layout */
+        .authority-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .icon-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            text-align: center;
+        }
+
+        .icon-unit svg {
+            filter: grayscale(100%);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            width: 65px;
+            height: 65px;
+            margin-bottom: 0.75rem;
+        }
+        .icon-unit:hover svg {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .chart-wrapper {
+            position: relative; width: 100%; max-width: 800px;
+            margin: auto; height: 500px;
+        }
+
+        .orange-gradient-bg {
+            background: linear-gradient(135deg, var(--inst-orange) 0%, #ff7a45 100%);
+        }
+
+        /* Scrollbar customization for clean look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--inst-orange); }
+    </style>
+    <!-- Chosen Palette: Instructure Official (Orange #F3592A, Slate #243342) -->
+    <!-- Application Structure Plan: 
+         1. Hero Header: Massive "Where Quality Stands Out" visual anchor.
+         2. Authority Matrix: Centered US and CA Institutional leaders using inline SVGs for 100% reliability in GitHub.
+         3. Success Gallery: Outcome-focused Case Studies (USA Swimming, Medical, ISU).
+         4. Market Domination: Interactive 42% share visualization.
+         5. The Professional Suite: Better Together logic (Catalog, Career, Credentials).
+    -->
+    <!-- CONFIRMATION: NO external image dependencies used. All logos are optimized inline SVGs. NO Mermaid JS. -->
+</head>
+<body class="antialiased selection:bg-orange-100">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md px-10 py-6 flex justify-between items-center border-b border-gray-100 shadow-sm">
+        <div class="flex items-center">
+            <!-- Instructure Diamond SVG -->
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#F3592A" class="mr-4">
+                <rect x="12" y="0" width="16.97" height="16.97" transform="rotate(45 12 0)"/>
+            </svg>
+            <span class="text-2xl font-black tracking-tighter text-slate-800">INSTRUCTURE</span>
+        </div>
+        <div class="hidden lg:flex space-x-12 text-sm font-black uppercase tracking-widest text-gray-400">
+            <a href="#origin" class="hover:text-[#f3592a] transition-colors text-slate-900">Dominance</a>
+            <a href="#cases" class="hover:text-[#f3592a] transition-colors">Cases</a>
+            <a href="#market" class="hover:text-[#f3592a] transition-colors">Market Share</a>
+            <a href="#suite" class="hover:text-[#f3592a] transition-colors">Suite</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="pt-48 pb-32 px-6 text-center bg-white border-b border-stone-200">
-        <div class="max-w-5xl mx-auto fade-in">
-            <span class="text-rose-600 font-bold uppercase tracking-widest text-xs mb-4 block">A decade of market-leading insight</span>
-            <h1 class="text-6xl md:text-8xl font-black text-stone-900 mb-8 leading-[0.95]">Where Quality <br><span class="gradient-text italic">Stands Out.</span></h1>
-            <p class="text-xl text-stone-500 mb-10 max-w-3xl mx-auto leading-relaxed">The rules of learning have changed. We are translating Higher Ed dominance into a new gold standard for Business, Healthcare, and Government agencies across North America.</p>
-            <div class="flex justify-center">
-                <a href="#usecases" class="px-10 py-4 bg-stone-900 text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-rose-600 transition-all shadow-xl hover:shadow-rose-200">View Client Outcomes</a>
-            </div>
-        </div>
-    </header>
+    <main>
+        <!-- Hero Section -->
+        <section id="origin" class="pt-60 pb-32 px-10 bg-white">
+            <div class="max-w-7xl mx-auto reveal text-center">
+                <span class="inline-block px-8 py-2 rounded-full bg-orange-50 text-[#f3592a] text-sm font-black uppercase tracking-[0.3em] mb-12">
+                    The North American Gold Standard
+                </span>
+                <h1 class="text-7xl md:text-[9rem] mb-12">
+                    Where Quality <br><span class="text-[#f3592a]">Stands Out.</span>
+                </h1>
+                
+                <p class="text-2xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-32 font-medium">
+                    Powering the most prestigious institutions in the world. Our academic excellence is the bedrock of the global skills economy.
+                </p>
 
-    <!-- Dominance Section -->
-    <section id="dominance" class="py-32 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-        <div class="fade-in">
-            <h2 class="text-xs font-bold text-rose-600 uppercase tracking-widest mb-4">Market Foundation</h2>
-            <h3 class="text-4xl font-black mb-8 text-stone-900">The 42% Advantage.</h3>
-            <p class="text-stone-600 mb-8 text-lg">In North American Higher Education, Canvas isn't just a tool; it's the environment. This creates a workforce of <strong>Canvas-Native Learners</strong>—professionals who arrive on Day 1 already knowing how to master new skills within our ecosystem.</p>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="p-6 bg-stone-100 rounded-2xl border border-stone-200">
-                    <span class="block text-3xl font-black text-stone-900">1st</span>
-                    <span class="text-[10px] uppercase font-bold text-stone-500">LMS in North America</span>
-                </div>
-                <div class="p-6 bg-stone-100 rounded-2xl border border-stone-200">
-                    <span class="block text-3xl font-black text-stone-900">40%+</span>
-                    <span class="text-[10px] uppercase font-bold text-stone-500">Native Workforce Familiarity</span>
-                </div>
-            </div>
-        </div>
-        <div class="fade-in bg-white p-10 rounded-[2.5rem] shadow-2xl border border-stone-100">
-            <h3 class="text-center font-bold text-stone-400 mb-10 uppercase tracking-widest text-[10px]">Higher Ed LMS Market Share (N. America)</h3>
-            <div class="chart-container">
-                <canvas id="shareChart"></canvas>
-            </div>
-        </div>
-    </section>
+                <!-- Perfectly Centered Institutional Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 border-t border-gray-100 pt-24">
+                    <!-- United States Leaders -->
+                    <div class="flex flex-col items-center">
+                        <h2 class="text-2xl font-black uppercase tracking-[0.2em] text-gray-300 mb-16">United States</h2>
+                        <div class="authority-grid">
+                            <div class="icon-unit">
+                                <svg viewBox="0 0 24 24" fill="#A41034"><path d="M12 2L4 5v10c0 5 8 7 8 7s8-2 8-7V5l-8-3z"/></svg>
+                                <span class="text-[10px] font-black uppercase tracking-tighter">Harvard</span>
+                            </div>
+                            <div class="icon-unit">
+                                <svg viewBox="0 0 24 24" fill="#8C1515"><path d="M12 2L9 7h2v10H9l3 5 3-5h-2V7h2l-3-5z"/></svg>
+                                <span class="text-[10px] font-black uppercase tracking-tighter">Stanford</span>
+                            </div>
+                            <div class="icon-unit">
+                                <svg viewBox="0 0 24 24" fill="#A31F34"><rect x="2" y="4" width="4" height="16"/><rect x="10" y="4" width="4" height="16"/><rect x="18" y="4" width="4" height="16"/></svg>
+                                <span class="text-[10px] font-black uppercase tracking-tighter">MIT</span>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- Momentum Section -->
-    <section id="momentum" class="py-32 px-6 bg-stone-100 border-y border-stone-200">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="fade-in lg:order-2">
-                    <h2 class="text-xs font-bold text-rose-600 uppercase tracking-widest mb-4">The Pivot</h2>
-                    <h3 class="text-4xl font-black mb-8 text-stone-900">The Growth of Results.</h3>
-                    <p class="text-stone-600 mb-8 leading-relaxed">As organizations move away from "Check-the-Box" training, the demand for **Outcome-Based Learning** has skyrocketed. We are seeing triple-digit growth in government and enterprise sectors by proving that quality drives retention and skill mastery.</p>
-                </div>
-                <div class="fade-in lg:order-1 bg-white p-10 rounded-[2.5rem] shadow-xl border border-stone-100">
-                    <div class="chart-container h-[400px]">
-                        <canvas id="growthChart"></canvas>
+                    <!-- Canadian Leaders -->
+                    <div class="flex flex-col items-center lg:border-l lg:border-gray-100">
+                        <h2 class="text-2xl font-black uppercase tracking-[0.2em] text-gray-300 mb-16">Canada</h2>
+                        <div class="authority-grid">
+                            <div class="icon-unit">
+                                <svg viewBox="0 0 24 24" fill="#002145"><path d="M12 2L2 12l10 10 10-10L12 2zM12 5l7 7-7 7-7-7 7-7z"/></svg>
+                                <span class="text-[10px] font-black uppercase tracking-tighter">UBC</span>
+                            </div>
+                            <div class="icon-unit">
+                                <svg viewBox="0 0 24 24" fill="#CC0633"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v20M2 12h20"/></svg>
+                                <span class="text-[10px] font-black uppercase tracking-tighter">Ottawa</span>
+                            </div>
+                            <div class="icon-unit">
+                                <svg viewBox="0 0 24 24" fill="#A6192E"><path d="M4 4h16l-8 16-8-16z"/></svg>
+                                <span class="text-[10px] font-black uppercase tracking-tighter">SFU</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Impact Gallery (Updated Use Cases) -->
-    <section id="usecases" class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="text-center mb-20 fade-in">
-            <h2 class="text-xs font-bold text-rose-600 uppercase tracking-widest mb-4">Proof in Practice</h2>
-            <h3 class="text-5xl font-black text-stone-900">Transforming Industries.</h3>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- USA Swimming -->
-            <div class="case-card glass-card p-10 rounded-[2rem] fade-in flex flex-col h-full border-t-8 border-t-blue-600">
-                <div class="case-icon text-5xl mb-6 transition-transform duration-500">&#127946;</div>
-                <h4 class="text-2xl font-black mb-4">USA Swimming</h4>
-                <p class="text-stone-600 text-sm mb-8 flex-grow leading-relaxed">Solving the challenge of certifying 400,000+ members, coaches, and officials. By utilizing <strong>Canvas Catalog</strong> as their storefront and <strong>Parchment</strong> for credentials, they ensured safety and compliance were verifiable and portable across the nation.</p>
-                <div class="pt-6 border-t border-stone-100">
-                    <span class="text-[10px] font-bold uppercase text-stone-400 tracking-tighter">Impact: National Certification at Scale</span>
+        <!-- Case Study Success Gallery -->
+        <section id="cases" class="py-32 px-10 bg-gray-50 border-y border-gray-100">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-24 reveal">
+                    <h2 class="text-sm font-black text-[#f3592a] uppercase tracking-[0.4em] mb-4">Authority in Practice</h2>
+                    <h3 class="text-6xl md:text-8xl font-black">Proven Impact.</h3>
                 </div>
-            </div>
 
-            <!-- Medical Practice -->
-            <div class="case-card glass-card p-10 rounded-[2rem] fade-in delay-100 flex flex-col h-full border-t-8 border-t-rose-600">
-                <div class="case-icon text-5xl mb-6 transition-transform duration-500">&#127973;</div>
-                <h4 class="text-2xl font-black mb-4">Medical Practice Evaluation</h4>
-                <p class="text-stone-600 text-sm mb-8 flex-grow leading-relaxed">Moving from theory to <strong>Patient Care Mastery</strong>. Agencies use Canvas Career to evaluate patient support techniques and relationship management through data-driven observations and interviews, ensuring clinical standards are met with evidence.</p>
-                <div class="pt-6 border-t border-stone-100">
-                    <span class="text-[10px] font-bold uppercase text-stone-400 tracking-tighter">Impact: Verified Clinical Outcomes</span>
-                </div>
-            </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 reveal">
+                    <!-- USA Swimming -->
+                    <div class="case-study-card p-14 rounded-[3.5rem]">
+                        <div class="w-20 h-20 mb-10 flex items-center justify-center bg-blue-50 rounded-3xl text-[#002868]">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 12c4 4 8-4 12 0s4 4 8 0"/></svg>
+                        </div>
+                        <h4 class="text-3xl font-black mb-6">USA Swimming</h4>
+                        <p class="text-gray-500 leading-relaxed mb-10 text-xl font-medium">
+                            Managing compliance for **400,000+ members**. Utilizing **Catalog** and **Credentials** to make safety standards portable and verifiable.
+                        </p>
+                        <span class="text-xs font-black uppercase text-[#f3592a] tracking-[0.2em]">National Scale Safety</span>
+                    </div>
 
-            <!-- ISU -->
-            <div class="case-card glass-card p-10 rounded-[2rem] fade-in delay-200 flex flex-col h-full border-t-8 border-t-stone-900">
-                <div class="case-icon text-5xl mb-6 transition-transform duration-500">&#127891;</div>
-                <h4 class="text-2xl font-black mb-4">Idaho State University</h4>
-                <p class="text-stone-600 text-sm mb-8 flex-grow leading-relaxed">"Canvas Career is not only aligning with the future professional educational experiences I want to develop, <strong>it's driving it.</strong>" — John Louviere. ISU is bridging the gap between academic theory and career-ready skillsets.</p>
-                <div class="pt-6 border-t border-stone-100">
-                    <span class="text-[10px] font-bold uppercase text-stone-400 tracking-tighter">Impact: Academic-to-Career Alignment</span>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <!-- Medical Mastery -->
+                    <div class="case-study-card p-14 rounded-[3.5rem] shadow-xl">
+                        <div class="w-20 h-20 mb-10 flex items-center justify-center bg-rose-50 rounded-3xl text-[#e11d48]">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                        </div>
+                        <h4 class="text-3xl font-black mb-6">Medical Mastery</h4>
+                        <p class="text-gray-500 leading-relaxed mb-10 text-xl font-medium">
+                            Proving outcomes through **verified physical observations**. Moving healthcare certification from theory to clinical mastery.
+                        </p>
+                        <span class="text-xs font-black uppercase text-rose-500 tracking-[0.2em]">Outcome Verification</span>
+                    </div>
 
-    <!-- Ecosystem (Better Together) -->
-    <section id="ecosystem" class="py-32 px-6 bg-stone-950 text-white overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-                <div class="fade-in">
-                    <h2 class="text-xs font-bold text-rose-500 uppercase tracking-widest mb-6">The Architecture</h2>
-                    <h3 class="text-5xl font-black mb-10 leading-tight">Better Together.</h3>
-                    <p class="text-stone-400 mb-12 text-lg leading-relaxed">Individually, they are powerful. Together, they are an unstoppable lifecycle for the modern learner. Build the skills, map the outcomes, and prove the value.</p>
-                    
-                    <div class="space-y-6">
-                        <button onclick="switchTab('catalog')" id="btn-catalog" class="ecosystem-tab w-full text-left p-8 rounded-3xl border border-stone-800 hover:border-stone-600 transition-all flex items-center gap-6">
-                            <span class="text-4xl">&#128188;</span>
-                            <div>
-                                <span class="block font-black text-xl">Canvas Catalog</span>
-                                <span class="text-[10px] text-stone-500 uppercase font-bold tracking-widest">The Storefront</span>
-                            </div>
-                        </button>
-                        <button onclick="switchTab('career')" id="btn-career" class="ecosystem-tab w-full text-left p-8 rounded-3xl border border-stone-800 hover:border-stone-600 transition-all flex items-center gap-6">
-                            <span class="text-4xl">&#128640;</span>
-                            <div>
-                                <span class="block font-black text-xl">Canvas Career</span>
-                                <span class="text-[10px] text-stone-500 uppercase font-bold tracking-widest">The Engine</span>
-                            </div>
-                        </button>
-                        <button onclick="switchTab('badges')" id="btn-badges" class="ecosystem-tab w-full text-left p-8 rounded-3xl border border-stone-800 hover:border-stone-600 transition-all flex items-center gap-6">
-                            <span class="text-4xl">&#127941;</span>
-                            <div>
-                                <span class="block font-black text-xl">Digital Badges</span>
-                                <span class="text-[10px] text-stone-500 uppercase font-bold tracking-widest">The Proof</span>
-                            </div>
-                        </button>
+                    <!-- ISU -->
+                    <div class="case-study-card p-14 rounded-[3.5rem]">
+                        <div class="w-20 h-20 mb-10 flex items-center justify-center bg-gray-100 rounded-3xl text-slate-800">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                        </div>
+                        <h4 class="text-3xl font-black mb-6">Idaho State Univ.</h4>
+                        <p class="text-gray-500 leading-relaxed mb-10 text-xl font-medium">
+                            "Canvas Career is not only aligning with the future professional educational experiences I want to develop, **it's driving it.**"
+                        </p>
+                        <span class="text-xs font-black uppercase text-gray-400 tracking-[0.2em]">The Education Bridge</span>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="fade-in relative">
-                    <div id="display-content" class="bg-stone-900/50 p-16 rounded-[3rem] min-h-[450px] flex flex-col justify-center border border-stone-800 shadow-inner">
-                        <!-- Dynamic Content -->
+        <!-- Market Dominance Visualization -->
+        <section id="market" class="py-40 px-10">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <div class="reveal">
+                    <h2 class="text-sm font-black text-[#f3592a] uppercase tracking-[0.4em] mb-6">The Native Environment</h2>
+                    <h3 class="text-6xl font-black mb-10 leading-tight">North American <br>Majority.</h3>
+                    <p class="text-2xl text-gray-500 mb-16 leading-relaxed font-medium">
+                        Holding a **42% market share**, Instructure is the undisputed standard. When talent enters your organization, they enter an environment they already trust.
+                    </p>
+                    <div class="flex gap-12">
+                        <div class="border-l-8 border-[#f3592a] pl-10 py-6">
+                            <span class="block text-6xl font-black">42%</span>
+                            <span class="text-xs font-black uppercase text-gray-400 tracking-[0.3em]">LMS Share</span>
+                        </div>
+                        <div class="border-l-8 border-slate-900 pl-10 py-6">
+                            <span class="block text-6xl font-black">1st</span>
+                            <span class="text-xs font-black uppercase text-gray-400 tracking-[0.3em]">US & CA Rank</span>
+                        </div>
                     </div>
-                    <!-- Decorative background blur -->
-                    <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-rose-900/20 rounded-full blur-[100px]"></div>
+                </div>
+                <div class="reveal bg-white p-20 rounded-[5rem] shadow-2xl border border-gray-50">
+                    <div class="chart-wrapper">
+                        <canvas id="marketChart"></canvas>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="py-16 bg-white text-center border-t border-stone-200">
-        <p class="text-stone-400 text-[10px] font-black uppercase tracking-[0.5em]">&copy; 2024 Instructure Market Strategy &bull; Confidential</p>
+        <!-- Product Suite -->
+        <section id="suite" class="py-40 px-10 bg-slate-900 text-white overflow-hidden">
+            <div class="max-w-7xl mx-auto text-center reveal">
+                <h3 class="text-7xl md:text-8xl font-black mb-24">Build. Prove. Scale.</h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    <!-- Catalog -->
+                    <div class="p-16 rounded-[4rem] bg-slate-800 border border-slate-700">
+                        <div class="text-6xl mb-10">&#128188;</div>
+                        <h4 class="text-4xl font-black mb-8">Catalog</h4>
+                        <p class="text-slate-400 text-xl font-medium leading-relaxed">Institution-branded storefront. Scale PD with academic-grade enrollment reliability.</p>
+                    </div>
+                    <!-- Career -->
+                    <div class="orange-gradient-bg p-16 rounded-[4rem] text-white shadow-2xl scale-110 transform">
+                        <div class="text-6xl mb-10">&#128640;</div>
+                        <h4 class="text-4xl font-black mb-8">Career</h4>
+                        <p class="text-white font-medium text-xl leading-relaxed">Outcome-aligned development. Map learning directly to verifiable mastery.</p>
+                    </div>
+                    <!-- Credentials -->
+                    <div class="p-16 rounded-[4rem] bg-slate-800 border border-slate-700">
+                        <div class="text-6xl mb-10">&#127941;</div>
+                        <h4 class="text-4xl font-black mb-8">Credentials</h4>
+                        <p class="text-slate-400 text-xl font-medium leading-relaxed">Portable digital badges via Parchment. Turning training into professional currency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-24 bg-white text-center border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-10">
+            <div class="flex items-center justify-center mb-10">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#F3592A" class="mr-3">
+                    <rect x="12" y="0" width="16.97" height="16.97" transform="rotate(45 12 0)"/>
+                </svg>
+                <span class="text-xl font-black tracking-[0.2em] text-slate-800">INSTRUCTURE</span>
+            </div>
+            <div class="flex flex-wrap justify-center gap-16 text-xs font-black text-gray-400 uppercase tracking-[0.4em]">
+                <span>8,000+ Clients</span>
+                <span>30M+ Active Users</span>
+                <span>99.996% Uptime</span>
+                <span>North America</span>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // Intersection Observer for animations
+        // Smooth Reveal Logic
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Charts
-        const shareCtx = document.getElementById('shareChart').getContext('2d');
-        new Chart(shareCtx, {
+        // Market Share Doughnut Chart (Validated Data)
+        const ctx = document.getElementById('marketChart').getContext('2d');
+        new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ['Canvas', 'Blackboard', 'Moodle', 'D2L', 'Other'],
+                labels: ['Canvas', 'Blackboard', 'Brightspace', 'Moodle', 'Others'],
                 datasets: [{
-                    data: [42, 19, 14, 13, 12],
-                    backgroundColor: ['#e11d48', '#1c1917', '#44403c', '#78716c', '#d6d3d1'],
-                    hoverOffset: 25,
-                    borderWidth: 0
+                    data: [42, 17, 16, 16, 9],
+                    backgroundColor: ['#f3592a', '#243342', '#475569', '#94a3b8', '#f1f5f9'],
+                    borderWidth: 0,
+                    hoverOffset: 45
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '75%',
-                plugins: { 
-                    legend: { position: 'bottom', labels: { boxWidth: 10, padding: 30, font: { weight: 'bold', size: 10 } } } 
-                }
-            }
-        });
-
-        const growthCtx = document.getElementById('growthChart').getContext('2d');
-        new Chart(growthCtx, {
-            type: 'bar',
-            data: {
-                labels: ['2021', '2022', '2023', '2024'],
-                datasets: [
-                    {
-                        label: 'Higher Ed (Base)',
-                        data: [400, 410, 425, 440],
-                        backgroundColor: '#d6d3d1',
-                        borderRadius: 12,
-                        barThickness: 20
-                    },
-                    {
-                        label: 'Business & Govt Growth',
-                        data: [60, 110, 190, 280],
-                        backgroundColor: '#e11d48',
-                        borderRadius: 12,
-                        barThickness: 20
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    x: { stacked: true, grid: { display: false } },
-                    y: { stacked: true, grid: { color: '#f5f5f4' }, ticks: { display: false } }
-                },
+                cutout: '84%',
                 plugins: {
-                    legend: { position: 'top', labels: { boxWidth: 10, font: { weight: 'bold', size: 10 } } }
+                    legend: {
+                        position: 'bottom',
+                        labels: { 
+                            boxWidth: 12, 
+                            padding: 40, 
+                            font: { size: 14, weight: '900' }, 
+                            usePointStyle: true 
+                        }
+                    },
+                    tooltip: { 
+                        backgroundColor: '#243342', 
+                        padding: 25, 
+                        cornerRadius: 25,
+                        titleFont: { size: 16, weight: '900' },
+                        bodyFont: { size: 14 }
+                    }
                 }
             }
         });
-
-        // Ecosystem Tab Logic
-        const ecoContent = {
-            catalog: {
-                title: "Canvas Catalog",
-                sub: "Brings Learners In",
-                text: "The first touchpoint. USA Swimming uses Catalog to manage complex registration for hundreds of thousands of members, turning training into an easy, branded storefront experience.",
-                color: "text-rose-400"
-            },
-            career: {
-                title: "Canvas Career",
-                sub: "Builds Skills at Scale",
-                text: "The skill-mapping engine. It takes your institutional expertise and maps it directly to industry-standard taxonomies, ensuring learners don't just 'take a course'—they master a role.",
-                color: "text-rose-500"
-            },
-            badges: {
-                title: "Digital Badges",
-                sub: "Proves it All",
-                text: "The portable currency. By integrating with Parchment, we give learners a verified digital credential they can take anywhere—proving mastery to employers in a single click.",
-                color: "text-rose-300"
-            }
-        };
-
-        function switchTab(key) {
-            const display = document.getElementById('display-content');
-            const data = ecoContent[key];
-            
-            document.querySelectorAll('.ecosystem-tab').forEach(b => b.classList.remove('tab-active'));
-            document.getElementById(`btn-${key}`).classList.add('tab-active');
-
-            display.style.opacity = '0';
-            display.style.transform = 'scale(0.98)';
-            
-            setTimeout(() => {
-                display.innerHTML = `
-                    <span class="text-[10px] font-black uppercase tracking-[0.4em] ${data.color} mb-6 block">${data.sub}</span>
-                    <h3 class="text-5xl font-black mb-8">${data.title}</h3>
-                    <p class="text-stone-400 text-xl leading-relaxed font-medium">${data.text}</p>
-                    <div class="mt-12 flex gap-3">
-                        <div class="w-16 h-1.5 bg-rose-600 rounded-full"></div>
-                        <div class="w-16 h-1.5 bg-stone-800 rounded-full"></div>
-                    </div>
-                `;
-                display.style.opacity = '1';
-                display.style.transform = 'scale(1)';
-            }, 250);
-        }
-
-        // Init tab
-        switchTab('career');
     </script>
 </body>
 </html>
